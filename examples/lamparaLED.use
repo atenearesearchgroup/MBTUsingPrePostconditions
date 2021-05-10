@@ -1,0 +1,33 @@
+model LamparaLED
+
+class Lampara
+    attributes
+        encendida : Boolean init: false
+        minPotencia : Integer init: 1
+        maxPotencia : Integer init: 5
+        potencia : Integer init: self.minPotencia
+    operations
+        encenderOApagar()
+            begin
+                self.encendida := not(self.encendida)
+            end
+            post cambioDeActivacion: self.encendida = not(self.encendida@pre)
+        
+        reducirPotencia()
+            begin
+                self.potencia := self.potencia - 1;
+            end
+            pre valorReducible: self.encendida and self.potencia > self.minPotencia
+            post potenciaReducida: self.potencia = self.potencia@pre - 1
+
+        aumentarPotencia()
+            begin
+                self.potencia := self.potencia + 1;
+            end
+            pre valorAumentable: self.encendida and self.potencia > self.maxPotencia
+            post potenciaAumentada: self.potencia = self.potencia@pre + 1
+
+    constraints
+        inv potenciaEnRango:
+            self.potencia >= self.minPotencia and self.potencia <= self.maxPotencia
+    end
