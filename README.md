@@ -1,4 +1,4 @@
-# Tool for the automatic generation of exhaustive test suites using pre- and postconditions
+# Automatic generation of exhaustive test suites using pre- and postconditions
 
 ## Overview
 
