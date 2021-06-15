@@ -24,7 +24,7 @@ class Lampara
             begin
                 self.potencia := self.potencia + 1;
             end
-            pre valorAumentable: self.encendida and self.potencia > self.maxPotencia
+            pre valorAumentable: self.encendida and self.potencia < self.maxPotencia
             post potenciaAumentada: self.potencia = self.potencia@pre + 1
 
     constraints

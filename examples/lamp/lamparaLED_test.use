@@ -31,12 +31,12 @@ class Lampara
                 self.potencia := self.potencia + 1;
             end
             pre valorAumentable: 
-                self.encendida and self.potencia > self.maxPotencia
+                self.encendida and self.potencia < self.maxPotencia
             post potenciaAumentada: 
                 self.potencia = self.potencia@pre + 1
 
         _valorAumentable_aumentarPotencia() : Boolean = 
-            self.encendida and self.potencia > self.maxPotencia
+            self.encendida and self.potencia < self.maxPotencia
 
         _potenciaEnRango() : Boolean = self.potencia >= 
             self.minPotencia and self.potencia <= self.maxPotencia
